@@ -1,6 +1,7 @@
 #Nav {
     width: 100%;
-    height: auto;
+    height: 80px;
+    margin-bottom: -80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,6 +43,9 @@
 
 #Nav #nav-pages li {
     all: unset;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 #Nav #nav-pages a {
@@ -66,6 +70,10 @@
 
     font-size: 14px;
     transition: width 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#Nav #nav-search input::placeholder {
+    color: rgb(150, 150, 150);
 }
 
 #Nav #nav-search input:focus {
