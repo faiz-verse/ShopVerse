@@ -1,0 +1,113 @@
+{
+  "data": [
+    {
+      "_id": 1,
+      "userId": 1,
+      "productIds": [1, 2, 5],
+      "createdAt": "2025-06-01T12:00:00Z",
+      "updatedAt": "2025-06-05T15:30:00Z"
+    },
+    {
+      "_id": 2,
+      "userId": 2,
+      "productIds": [3, 7],
+      "createdAt": "2025-06-03T10:00:00Z",
+      "updatedAt": "2025-06-04T11:45:00Z"
+    },
+    {
+      "_id": 3,
+      "userId": 3,
+      "productIds": [5, 9, 10],
+      "createdAt": "2025-06-05T14:00:00Z",
+      "updatedAt": "2025-06-06T09:20:00Z"
+    },
+    {
+      "_id": 4,
+      "userId": 4,
+      "productIds": [4, 8],
+      "createdAt": "2025-06-07T08:00:00Z",
+      "updatedAt": "2025-06-08T16:10:00Z"
+    },
+    {
+      "_id": 5,
+      "userId": 5,
+      "productIds": [9, 11, 15],
+      "createdAt": "2025-06-09T11:00:00Z",
+      "updatedAt": "2025-06-10T12:50:00Z"
+    },
+    {
+      "_id": 6,
+      "userId": 6,
+      "productIds": [6, 12],
+      "createdAt": "2025-06-11T09:00:00Z",
+      "updatedAt": "2025-06-12T14:30:00Z"
+    },
+    {
+      "_id": 7,
+      "userId": 7,
+      "productIds": [13, 14],
+      "createdAt": "2025-06-13T10:00:00Z",
+      "updatedAt": "2025-06-14T15:00:00Z"
+    },
+    {
+      "_id": 8,
+      "userId": 8,
+      "productIds": [15, 16, 17],
+      "createdAt": "2025-06-15T12:00:00Z",
+      "updatedAt": "2025-06-16T10:45:00Z"
+    },
+    {
+      "_id": 9,
+      "userId": 9,
+      "productIds": [17, 18],
+      "createdAt": "2025-06-01T08:00:00Z",
+      "updatedAt": "2025-06-02T13:20:00Z"
+    },
+    {
+      "_id": 10,
+      "userId": 10,
+      "productIds": [19, 20],
+      "createdAt": "2025-06-03T11:00:00Z",
+      "updatedAt": "2025-06-04T09:30:00Z"
+    },
+    {
+      "_id": 11,
+      "userId": 11,
+      "productIds": [21, 22, 23],
+      "createdAt": "2025-06-05T13:00:00Z",
+      "updatedAt": "2025-06-06T14:15:00Z"
+    },
+    {
+      "_id": 12,
+      "userId": 12,
+      "productIds": [24, 25],
+      "createdAt": "2025-06-07T09:00:00Z",
+      "updatedAt": "2025-06-08T12:00:00Z"
+    },
+    {
+      "_id": 13,
+      "userId": 13,
+      "productIds": [26, 27],
+      "createdAt": "2025-06-09T10:00:00Z",
+      "updatedAt": "2025-06-10T11:45:00Z"
+    },
+    {
+      "_id": 14,
+      "userId": 14,
+      "productIds": [28, 29],
+      "createdAt": "2025-06-11T12:00:00Z",
+      "updatedAt": "2025-06-12T15:30:00Z"
+    },
+    {
+      "_id": 15,
+      "userId": 15,
+      "productIds": [30, 1],
+      "createdAt": "2025-06-13T08:00:00Z",
+      "updatedAt": "2025-06-14T10:20:00Z"
+    }
+  ],
+  "totalWishlists": 15,
+  "totalPages": 1,
+  "currentPage": 1,
+  "perPage": 50
+}

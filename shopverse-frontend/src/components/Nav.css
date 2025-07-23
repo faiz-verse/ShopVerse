@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 20px 40px;
+    padding: 20px 80px;
     border-radius: 0px 0px 30px 30px;
     background: rgba(200, 0, 200, 0.2);
     backdrop-filter: blur(5px);
@@ -45,7 +45,8 @@
     all: unset;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
+    cursor: pointer;
 }
 
 #Nav #nav-pages a {
