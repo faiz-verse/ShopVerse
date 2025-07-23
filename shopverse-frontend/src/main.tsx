@@ -5,6 +5,9 @@ import './index.css'
 // For Routing
 import { BrowserRouter, Routes, Route } from "react-router";
 
+// Components
+import Nav from './components/Nav';
+
 // Pages
 import Home from './pages/Home'
 import Products from './pages/Products'
@@ -19,6 +22,7 @@ import AdminDashboard from './pages/AdminDashboard'
 createRoot(document.getElementById('root')!).render(
     //   <StrictMode>
     <BrowserRouter>
+        <Nav />
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
