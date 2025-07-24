@@ -17,11 +17,16 @@
     left: 0;
 }
 
+.link {
+    all: unset;
+}
+
 #Nav #title {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    cursor: pointer;
 }
 
 #Nav #title img {

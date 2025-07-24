@@ -2,3 +2,61 @@
     padding: 100px 80px 0px 80px;
     box-sizing: border-box;
 }
+
+#Home #banner {
+    width: calc(100vw - 160px);
+    height: 350px;
+    background: palegoldenrod;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+#Home #banner .banner-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: calc(var(--position) * 100%);
+    display: flex;
+    justify-content: center;
+}
+
+#Home #banner .banner-content img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+#Home #banner .banner-content .banner-details {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+}
+
+#Home #banner .banner-content .banner-details .banner-title {
+    font-weight: 600;
+}
+
+#Home #banner .banner-button {
+    all: unset;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 5px lightgray;
+    position: absolute;
+    top: calc(50% - 25px);
+    z-index: 10;
+}
+
+#Home #banner #banner-before {
+    left: -25px;
+}
+
+#Home #banner #banner-after {
+    right: -25px;
+}

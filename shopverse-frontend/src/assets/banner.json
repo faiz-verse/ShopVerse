@@ -1,1 +1,77 @@
-
+[
+  {
+    "id": 1,
+    "imageLink": "banner 1.jpg",
+    "title": "Summer Sale",
+    "description": "Up to 50% off on all fashion wear!",
+    "fontStyle": "italic",
+    "fontColor": "#ffffff",
+    "titleFontSize": "2.5rem",
+    "titleFontFamily": "Poppins, sans-serif",
+    "descriptionFontSize": "1.2rem",
+    "descriptionFontFamily": "Roboto, sans-serif",
+    "redirectLink": "/products/summer-sale",
+    "redirectButtonText": "Shop Now",
+    "redirectButtonColor": "#ff6f61"
+  },
+  {
+    "id": 2,
+    "imageLink": "banner 2.jpg",
+    "title": "New Arrivals",
+    "description": "Check out the latest trends now!",
+    "fontStyle": "normal",
+    "fontColor": "#000000",
+    "titleFontSize": "2rem",
+    "titleFontFamily": "Montserrat, sans-serif",
+    "descriptionFontSize": "1rem",
+    "descriptionFontFamily": "Open Sans, sans-serif",
+    "redirectLink": "/products/new-arrivals",
+    "redirectButtonText": "Explore",
+    "redirectButtonColor": "#00bcd4"
+  },
+  {
+    "id": 3,
+    "imageLink": "banner 3.jpg",
+    "title": "Electronics Bonanza",
+    "description": "Big discounts on top gadgets!",
+    "fontStyle": "bold",
+    "fontColor": "#f5f5f5",
+    "titleFontSize": "2.2rem",
+    "titleFontFamily": "Ubuntu, sans-serif",
+    "descriptionFontSize": "1.1rem",
+    "descriptionFontFamily": "Inter, sans-serif",
+    "redirectLink": "/categories/electronics",
+    "redirectButtonText": "Grab Deals",
+    "redirectButtonColor": "#ff9800"
+  },
+  {
+    "id": 4,
+    "imageLink": "banner 4.jpg",
+    "title": "Flash Sale",
+    "description": "Hurry! Limited-time offers.",
+    "fontStyle": "oblique",
+    "fontColor": "#ff0000",
+    "titleFontSize": "2.5rem",
+    "titleFontFamily": "Raleway, sans-serif",
+    "descriptionFontSize": "1.3rem",
+    "descriptionFontFamily": "Noto Sans, sans-serif",
+    "redirectLink": "/deals/flash-sale",
+    "redirectButtonText": "Click to Know More",
+    "redirectButtonColor": "#c62828"
+  },
+  {
+    "id": 5,
+    "imageLink": "banner 5.jpg",
+    "title": "Back to School",
+    "description": "Everything your kids need — now on sale!",
+    "fontStyle": "normal",
+    "fontColor": "#1e90ff",
+    "titleFontSize": "2rem",
+    "titleFontFamily": "Lato, sans-serif",
+    "descriptionFontSize": "1rem",
+    "descriptionFontFamily": "Arial, sans-serif",
+    "redirectLink": "/collections/back-to-school",
+    "redirectButtonText": "Try Now",
+    "redirectButtonColor": "#4caf50"
+  }
+]

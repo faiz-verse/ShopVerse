@@ -15,10 +15,12 @@ const Nav = () => {
 
     return (
         <div id='Nav'>
-            <div id='title'>
-                <img src="shopping-cart.png" alt="logo" />
-                <span>ShopVerse</span>
-            </div>
+            <Link to="/" className='link'>
+                <div id='title'>
+                    <img src="shopping-cart.png" alt="logo" />
+                    <span>ShopVerse</span>
+                </div>
+            </Link>
             <div id='nav-search'>
                 <input type="text" placeholder='Search Product' />
                 <BsSearch id='search-icon' size={24} color='rgb(150, 150, 150)' />
