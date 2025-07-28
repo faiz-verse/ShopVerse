@@ -3,42 +3,48 @@
     box-sizing: border-box;
 }
 
-#Home #banner {
+#Home #banner-wrapper {
     width: calc(100vw - 160px);
     height: 350px;
-    background: palegoldenrod;
     position: relative;
-    overflow: hidden;
     border-radius: 10px;
 }
 
-#Home #banner .banner-content {
-    position: absolute;
+#Home #banner-wrapper #banner {
     width: 100%;
     height: 100%;
-    left: calc(var(--position) * 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+#Home #banner-wrapper #banner .banner-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
 
-#Home #banner .banner-content img {
+#Home #banner-wrapper #banner .banner-content img {
     width: 100%;
     height: 100%;
     object-position: center;
     object-fit: cover;
 }
 
-#Home #banner .banner-content .banner-details {
+#Home #banner-wrapper #banner .banner-content .banner-details {
     position: absolute;
-    left: 30px;
+    /* left: 50px; */
     top: 30px;
+    max-width: 50%;
 }
 
-#Home #banner .banner-content .banner-details .banner-title {
+#Home #banner-wrapper #banner .banner-content .banner-details .banner-title {
     font-weight: 600;
 }
 
-#Home #banner .banner-button {
+#Home #banner-wrapper .banner-button {
     all: unset;
     height: 50px;
     width: 50px;
@@ -53,10 +59,17 @@
     z-index: 10;
 }
 
-#Home #banner #banner-before {
+#Home #banner-wrapper #banner-before {
     left: -25px;
 }
 
-#Home #banner #banner-after {
+#Home #banner-wrapper #banner-after {
     right: -25px;
+}
+
+#Home #banner-wrapper #banner .banner-content .banner-details .redirect-button {
+    all: unset;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 50px;
 }

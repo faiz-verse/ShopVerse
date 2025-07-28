@@ -12,7 +12,9 @@
     "descriptionFontFamily": "Roboto, sans-serif",
     "redirectLink": "/products/summer-sale",
     "redirectButtonText": "Shop Now",
-    "redirectButtonColor": "#ff6f61"
+    "redirectButtonTextColor": "white",
+    "redirectButtonColor": "#ff6f61",
+    "position": "left"
   },
   {
     "id": 2,
@@ -27,7 +29,9 @@
     "descriptionFontFamily": "Open Sans, sans-serif",
     "redirectLink": "/products/new-arrivals",
     "redirectButtonText": "Explore",
-    "redirectButtonColor": "#00bcd4"
+    "redirectButtonTextColor": "black",
+    "redirectButtonColor": "orange",
+    "position": "center"
   },
   {
     "id": 3,
@@ -42,7 +46,9 @@
     "descriptionFontFamily": "Inter, sans-serif",
     "redirectLink": "/categories/electronics",
     "redirectButtonText": "Grab Deals",
-    "redirectButtonColor": "#ff9800"
+    "redirectButtonTextColor": "white",
+    "redirectButtonColor": "tomato",
+    "position": "right"
   },
   {
     "id": 4,
@@ -50,14 +56,16 @@
     "title": "Flash Sale",
     "description": "Hurry! Limited-time offers.",
     "fontStyle": "oblique",
-    "fontColor": "#ff0000",
+    "fontColor": "black",
     "titleFontSize": "2.5rem",
     "titleFontFamily": "Raleway, sans-serif",
     "descriptionFontSize": "1.3rem",
     "descriptionFontFamily": "Noto Sans, sans-serif",
     "redirectLink": "/deals/flash-sale",
     "redirectButtonText": "Click to Know More",
-    "redirectButtonColor": "#c62828"
+    "redirectButtonTextColor": "orange",
+    "redirectButtonColor": "white",
+    "position": "center"
   },
   {
     "id": 5,
@@ -65,13 +73,15 @@
     "title": "Back to School",
     "description": "Everything your kids need — now on sale!",
     "fontStyle": "normal",
-    "fontColor": "#1e90ff",
+    "fontColor": "white",
     "titleFontSize": "2rem",
     "titleFontFamily": "Lato, sans-serif",
     "descriptionFontSize": "1rem",
     "descriptionFontFamily": "Arial, sans-serif",
     "redirectLink": "/collections/back-to-school",
     "redirectButtonText": "Try Now",
-    "redirectButtonColor": "#4caf50"
+    "redirectButtonTextColor": "dodgerblue",
+    "redirectButtonColor": "white",
+    "position": "left"
   }
 ]
