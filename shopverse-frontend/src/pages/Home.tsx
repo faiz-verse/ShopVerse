@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Home.css'
 // import { Link } from 'react-router'
 
 // for react icons
 import { type IconBaseProps } from 'react-icons'
-import { BsArrowRight, BsArrowLeft } from 'react-icons/bs'
+import { BsArrowRight, BsArrowLeft, BsChevronDown, BsX, BsArrowClockwise } from 'react-icons/bs'
 
 // to import json data
 import productData from '../assets/products.json'
@@ -14,6 +14,9 @@ const Home = () => {
 
     const BsArRight = BsArrowRight as React.ComponentType<IconBaseProps>
     const BsArLeft = BsArrowLeft as React.ComponentType<IconBaseProps>
+    const BsArDown = BsChevronDown as React.ComponentType<IconBaseProps>
+    const BsClose = BsX as React.ComponentType<IconBaseProps>
+    const BsRefresh = BsArrowClockwise as React.ComponentType<IconBaseProps>
 
     const products = productData.data
     const banner = bannerData
@@ -34,7 +37,7 @@ const Home = () => {
     productTypes.forEach((c) => console.log(c.type, " ", c.repetition))
 
 
-    // for banner
+    // ------------------------- for BANNER ----------------------------
     const [currentBanner, setCurrentBanner] = React.useState(0);
 
     useEffect(() => {
@@ -62,6 +65,45 @@ const Home = () => {
     const handleNext = () => {
         setCurrentBanner((prev) => (prev === banner.length ? 0 : prev + 1));
     };
+
+    // --------------------------- for FILTER ----------------------------
+    type FilterKey = "category" | "type" | "price" | "rating" | "sortby";
+    type Filters = Record<FilterKey, string>;
+    type FilterActiveState = Record<FilterKey, boolean>;
+    const initialFilters: Filters = {
+        category: "",
+        type: "",
+        price: "",
+        rating: "",
+        sortby: ""
+    };
+
+    const initialIsActive: FilterActiveState = {
+        category: false,
+        type: false,
+        price: false,
+        rating: false,
+        sortby: false
+    };
+
+    const [filters, setFilters] = useState<Filters>(initialFilters);
+    const [isFilterActive, setIsFilterActive] = useState<FilterActiveState>(initialIsActive);
+    const handleFilterClick = (key: FilterKey) => {
+        setIsFilterActive(prev => {
+            const updated: FilterActiveState = {
+                category: false,
+                type: false,
+                price: false,
+                rating: false,
+                sortby: false
+            };
+            if (!prev[key]) {
+                updated[key] = true;
+            }
+            return updated;
+        });
+    };
+
 
     return (
         <div id='Home'>
@@ -121,8 +163,70 @@ const Home = () => {
                 </button>
             </div>
 
-            <div id='products'>
+            <div id='filters'>
+                <div className='filter' id='category' onClick={() => { handleFilterClick("category") }}>
+                    <span>Category</span>
+                    <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.category === "" ? "flex" : "none" }} />
+                    <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.category === "" ? "none" : "flex" }} />
+                    <div className='options'
+                        style={{
+                            animation: isFilterActive.category === true ? "show-option 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards" : "show-option 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards reverse",
+                        }}>
 
+                    </div>
+                </div>
+                <div className='filter' id='type' onClick={() => { handleFilterClick("type") }}>
+                    <span>Type</span>
+                    <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.type === "" ? "flex" : "none" }} />
+                    <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.type === "" ? "none" : "flex" }} />
+                    <div className='options'
+                        style={{
+                            display: isFilterActive.category === true ? "flex" : "none"
+
+                        }}>
+
+                    </div>
+                </div>
+                <div className='filter' id="price" onClick={() => { handleFilterClick("price") }}>
+                    <span>Price</span>
+                    <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.price === "" ? "flex" : "none" }} />
+                    <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.price === "" ? "none" : "flex" }} />
+                    <div className='options'
+                        style={{
+                            display: isFilterActive.category === true ? "flex" : "none"
+
+                        }}>
+
+                    </div>
+                </div>
+                <div className='filter' id="rating" onClick={() => { handleFilterClick("rating") }}>
+                    <span>Rating</span>
+                    <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.rating === "" ? "flex" : "none" }} />
+                    <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.rating === "" ? "none" : "flex" }} />
+                    <div className='options'
+                        style={{
+                            display: isFilterActive.category === true ? "flex" : "none"
+
+                        }}>
+
+                    </div>
+                </div>
+                <div className='filter' id='reset-filters'>
+                    <span>Reset</span>
+                    <BsRefresh size={16} color='black' strokeWidth={1} />
+                </div>
+                <div className='filter' id='sort-by' onClick={() => { handleFilterClick("sortby") }}>
+                    <span>Sort by</span>
+                    <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.sortby === "" ? "flex" : "none" }} />
+                    <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.sortby === "" ? "none" : "flex" }} />
+                    <div className='options'
+                        style={{
+                            display: isFilterActive.category === true ? "flex" : "none"
+
+                        }}>
+
+                    </div>
+                </div>
             </div>
         </div>
     )
