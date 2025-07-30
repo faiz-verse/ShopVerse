@@ -131,7 +131,7 @@
     rotate: 45deg;
 }
 
-#Home #filters #sort-by {
+#Home #filters #sortby {
     position: absolute;
     right: 0;
     background-color: transparent;
@@ -148,25 +148,32 @@
 
     opacity: 0;
     top: 0px;
-    right: -50px;
-    box-shadow: 0px 0px 10px #ccc;
+    left: 0px;
+    box-shadow: 0px 0px 10px #eeeeee;
     z-index: 10;
-    /* animation: show-option 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards; */
-    /* animation-play-state: paused; */
+
+    transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    pointer-events: none;
 }
 
-@keyframes show-option {
-    0% {
-        display: none;
-        opacity: 0;
-        right: -100px;
-    }
+#Home #filters .active .options {
+    opacity: 1;
+    top: 0px;
+    left: calc(100% + 20px);
+    pointer-events: all;
+}
 
-    100% {
-        display: flex;
-        opacity: 1;
-        right: -320px;
-    }
+#Home #filters #sortby .options {
+    opacity: 0;
+    left: -200px;
+}
+
+#Home #filters #sortby.active .options {
+    opacity: 1;
+    top: calc(100% + 20px);
+    left: -200px;
+    pointer-events: all;
+
 }
 
 /* -------------------------- RESPONSIVENESS ---------------- */
@@ -204,6 +211,76 @@
 
     #Home #banner-wrapper #banner-after {
         right: -20px;
+    }
+
+    /* ------------------------ FILTERS ------------------------- */
+    #Home #filters {
+        margin-top: 15px;
+        width: 90%;
+        align-self: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    #Home #filters .filter span {
+        margin-right: 5px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    #Home #filters .filter svg {
+        scale: 0.7;
+        stroke-width: 0.7;
+        transition: rotate 0.1s ease-in;
+    }
+
+    #Home #filters #reset-filters:hover svg {
+        rotate: 45deg;
+    }
+
+    #Home #filters #sortby {
+        position: static;
+        background-color: transparent;
+        border: 2px solid #ccc;
+    }
+
+    /* needs fixing */
+    #Home #filters .filter .options {
+        width: 300px;
+        height: auto;
+        min-height: 200px;
+        background: #eeeeee;
+        border-radius: 10px;
+        position: absolute;
+
+        opacity: 0;
+        top: 0px;
+        left: 0px;
+        box-shadow: 0px 0px 10px #eeeeee;
+        z-index: 10;
+
+        transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        pointer-events: none;
+    }
+
+    #Home #filters .active .options {
+        opacity: 1;
+        top: calc(100% + 20px);
+        left: 0px;
+        pointer-events: all;
+    }
+
+    #Home #filters #sortby .options {
+        opacity: 0;
+        left: 0px;
+    }
+
+    #Home #filters #sortby.active .options {
+        opacity: 1;
+        top: calc(100% + 20px);
+        left: 0px;
+        pointer-events: all;
     }
 }
 
