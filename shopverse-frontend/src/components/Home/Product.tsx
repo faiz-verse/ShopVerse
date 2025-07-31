@@ -100,6 +100,7 @@ const Product = () => {
 
     return (
         <>
+
             {/* ------------------------------------ FILTER ------------------------------------ */}
             <div id='filters'>
                 <div className='filter' id='category' onClick={() => { handleFilterClick("category") }}>
@@ -136,7 +137,19 @@ const Product = () => {
                             Min: <input type='number' step={100} onChange={(e) => setMaxPrice(Number(e.target.value))} onKeyDown={(e) => e.key === "Enter" && handlePriceFilter()} />
                             <button onClick={() => {
                                 handlePriceFilter();
-                                setFilters(prev => ({ ...prev, price: (priceRange.max || priceRange.min) ? (priceRange.max > priceRange.min) ? `< ${priceRange.max} and > ${priceRange.min}` : `< ${priceRange.min} and > ${priceRange.max}` : `` }));
+                                setFilters(prev => {
+                                    let priceLabel = '';
+                                    if (typeof priceRange.max === 'number' && typeof priceRange.min === 'number') {
+                                        priceLabel = priceRange.max > priceRange.min
+                                            ? `< ${priceRange.max} and > ${priceRange.min}`
+                                            : `< ${priceRange.min} and > ${priceRange.max}`;
+                                    } else if (typeof priceRange.max === 'number') {
+                                        priceLabel = `< ${priceRange.max}`;
+                                    } else if (typeof priceRange.min === 'number') {
+                                        priceLabel = `> ${priceRange.min}`;
+                                    }
+                                    return { ...prev, price: priceLabel };
+                                });
                             }}>Apply</button>
                         </div>
                     </div>
@@ -160,6 +173,8 @@ const Product = () => {
                     </div>
                 </div>
             </div>
+
+
         </>
     )
 }
