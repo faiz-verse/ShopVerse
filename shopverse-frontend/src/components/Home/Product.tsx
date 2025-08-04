@@ -90,13 +90,24 @@ const Product = () => {
         });
     };
 
-    let priceRange: { min?: number, max?: number } = {}
-    const [minPrice, setMinPrice] = useState<number>()
-    const [maxPrice, setMaxPrice] = useState<number>()
-    const handlePriceFilter = () => {
-        priceRange = { min: minPrice, max: maxPrice };
-        console.log(priceRange)
-    }
+    // let priceRange: { min?: number, max?: number } = {}
+    // const [minPrice, setMinPrice] = useState<number>()
+    // const [maxPrice, setMaxPrice] = useState<number>()
+    // const handlePriceFilter = () => {
+    //     priceRange = { min: minPrice, max: maxPrice };
+    //     console.log(priceRange)
+    // }
+
+    // -------------------------------- FOR PRODUCT --------------------------------------
+    const hasActiveFilter = (): boolean => {
+        for (const key in filters) {
+            if (filters[key as keyof Filters] !== "") {
+                return true
+            }
+        }
+        return false
+    };
+
 
     return (
         <>
@@ -123,16 +134,16 @@ const Product = () => {
                         ))}
                     </div>
                 </div>
-                <div className='filter' id="price">
-                    <span onClick={() => { handleFilterClick("price") }}>{filters.price === "" ? "Price" : filters.price}</span>
+                <div className='filter' id="price" onClick={() => { handleFilterClick("price") }}>
+                    <span>{filters.price === "" ? "Price" : filters.price}</span>
                     <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.price === "" ? "flex" : "none", rotate: isFilterActive.price === true ? '-90deg' : '0deg' }} />
                     <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.price === "" ? "none" : "flex" }} />
                     <div className='options'>
-                        <div className="option" onClick={() => { priceRange = { max: 200 }; setFilters(prev => ({ ...prev, price: "< 200" })); }}>{'< 200'}</div>
-                        <div className="option" onClick={() => { priceRange = { max: 500 }; setFilters(prev => ({ ...prev, price: "< 500" })); }}>{'< 500'}</div>
-                        <div className="option" onClick={() => { priceRange = { max: 800 }; setFilters(prev => ({ ...prev, price: "< 800" })); }}>{'< 800'}</div>
-                        <div className="option" onClick={() => { priceRange = { max: 1200 }; setFilters(prev => ({ ...prev, price: "< 1200" })); }}>{'< 1200'}</div>
-                        <div className="option">
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, price: "< 200" })); }}>{'< 200'}</div>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, price: "< 500" })); }}>{'< 500'}</div>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, price: "< 800" })); }}>{'< 800'}</div>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, price: "< 1200" })); }}>{'< 1200'}</div>
+                        {/* <div className="option">
                             Max: <input type="number" step={100} onChange={(e) => setMinPrice(Number(e.target.value))} onKeyDown={(e) => e.key === "Enter" && handlePriceFilter()} />
                             Min: <input type='number' step={100} onChange={(e) => setMaxPrice(Number(e.target.value))} onKeyDown={(e) => e.key === "Enter" && handlePriceFilter()} />
                             <button onClick={() => {
@@ -151,7 +162,7 @@ const Product = () => {
                                     return { ...prev, price: priceLabel };
                                 });
                             }}>Apply</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className='filter' id="rating" onClick={() => { handleFilterClick("rating") }}>
@@ -159,6 +170,10 @@ const Product = () => {
                     <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.rating === "" ? "flex" : "none", rotate: isFilterActive.rating === true ? '-90deg' : '0deg' }} />
                     <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.rating === "" ? "none" : "flex" }} />
                     <div className='options'>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, rating: "4" })); }}>{'⭐⭐⭐⭐'}</div>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, rating: "3" })); }}>{'⭐⭐⭐'}</div>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, rating: "2" })); }}>{'⭐⭐'}</div>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, rating: "1" })); }}>{'⭐'}</div>
                     </div>
                 </div>
                 <div className='filter' id='reset-filters' onClick={() => { setFilters(initialFilters); setIsFilterActive(initialIsActive) }}>
@@ -170,10 +185,20 @@ const Product = () => {
                     <PiSlider size={16} color='black' strokeWidth={1} style={{ display: filters.sortby === "" ? "flex" : "none" }} />
                     <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.sortby === "" ? "none" : "flex" }} />
                     <div className='options'>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, sortby: "A-Z" })); }}>{'A-Z'}</div>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, sortby: "Title" })); }}>{'Title'}</div>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, sortby: "Price" })); }}>{'Price'}</div>
+                        <div className="option" onClick={() => { setFilters(prev => ({ ...prev, sortby: "Rating" })); }}>{'Rating'}</div>
                     </div>
                 </div>
             </div>
 
+            {/* -------------------------------- PRODUCTS ------------------------------------- */}
+            <div id='product'>
+                {hasActiveFilter() && (
+                    <h2>Filter active</h2>
+                )}
+            </div>
 
         </>
     )
