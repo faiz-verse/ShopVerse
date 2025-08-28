@@ -43,17 +43,19 @@
 }
 
 #filters .filter .options {
-    width: 300px;
+    /* width: 300px; */
+    min-width: 150px;
     height: auto;
-    min-height: 200px;
-    background: #eeeeee;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    background: white;
     border-radius: 10px;
     position: absolute;
 
     opacity: 0;
     top: 0px;
     left: 0px;
-    box-shadow: 0px 0px 10px #eeeeee;
+    box-shadow: 0px 5px 10px #eeeeee;
     z-index: 10;
 
     transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -69,15 +71,39 @@
 
 #filters #sortby .options {
     opacity: 0;
-    left: -200px;
+    left: -50%;
 }
 
 #filters #sortby.active .options {
     opacity: 1;
     top: calc(100% + 20px);
-    left: -200px;
+    left: -50%;
     pointer-events: all;
+}
 
+#filters .filter .options .option {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+#filters .filter .options .option span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 7px;
+    background: gray;
+    color: white;
+    border-radius: 20px;
+}
+
+#filters .filter .options .option:last-child {
+    border-bottom: none;
 }
 
 /* -------------------------- RESPONSIVENESS ---------------- */
