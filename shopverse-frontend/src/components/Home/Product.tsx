@@ -3,7 +3,7 @@ import './Product.css'
 
 // for react icons
 import { type IconBaseProps } from 'react-icons'
-import { BsChevronDown, BsX, BsArrowClockwise } from 'react-icons/bs'
+import { BsChevronDown, BsX, BsArrowClockwise, BsStar, BsStarFill } from 'react-icons/bs'
 import { PiSlidersHorizontal } from "react-icons/pi";
 
 // to import json data
@@ -15,6 +15,8 @@ const Product = () => {
     const BsClose = BsX as React.ComponentType<IconBaseProps>
     const BsRefresh = BsArrowClockwise as React.ComponentType<IconBaseProps>
     const PiSlider = PiSlidersHorizontal as React.ComponentType<IconBaseProps>
+    const BsStarEmpty = BsStar as React.ComponentType<IconBaseProps>
+    const BsStarFilled = BsStarFill as React.ComponentType<IconBaseProps>
 
     // ----------------------- FOR PRODUCTS --------------------------
     const products = productData.data
@@ -117,7 +119,7 @@ const Product = () => {
                 <div className='filter' id='category' onClick={() => { handleFilterClick("category") }}>
                     <span>{filters.category === "" ? "Category" : filters.category}</span>
                     <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.category === "" ? "flex" : "none", rotate: isFilterActive.category === true ? '-90deg' : '0deg' }} />
-                    <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.category === "" ? "none" : "flex" }} />
+                    <BsClose size={20} color='black' strokeWidth={1} style={{ display: filters.category === "" ? "none" : "flex" }} onClick={() => setFilters(prev => ({ ...prev, category: "" }))} />
                     <div className='options'>
                         {productCategories.map((c, index) => (
                             <div className='option' key={index} onClick={() => setFilters(prev => ({ ...prev, category: c.category }))}>{c.category} <span>{c.repetition}</span> </div>
@@ -127,7 +129,7 @@ const Product = () => {
                 <div className='filter' id='type' onClick={() => { handleFilterClick("type") }}>
                     <span>{filters.type === "" ? "Type" : filters.type}</span>
                     <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.type === "" ? "flex" : "none", rotate: isFilterActive.type === true ? '-90deg' : '0deg' }} />
-                    <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.type === "" ? "none" : "flex" }} />
+                    <BsClose size={20} color='black' strokeWidth={1} style={{ display: filters.type === "" ? "none" : "flex" }} onClick={() => setFilters(prev => ({ ...prev, type: "" }))} />
                     <div className='options'>
                         {productTypes.map((t, index) => (
                             <div className='option' key={index} onClick={() => setFilters(prev => ({ ...prev, type: t.type }))}>{t.type} <span>{t.repetition}</span> </div>
@@ -137,7 +139,7 @@ const Product = () => {
                 <div className='filter' id="price" onClick={() => { handleFilterClick("price") }}>
                     <span>{filters.price === "" ? "Price" : filters.price}</span>
                     <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.price === "" ? "flex" : "none", rotate: isFilterActive.price === true ? '-90deg' : '0deg' }} />
-                    <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.price === "" ? "none" : "flex" }} />
+                    <BsClose size={20} color='black' strokeWidth={1} style={{ display: filters.price === "" ? "none" : "flex" }} onClick={() => setFilters(prev => ({ ...prev, price: "" }))} />
                     <div className='options'>
                         <div className="option" onClick={() => { setFilters(prev => ({ ...prev, price: "< 200" })); }}>{'< 200'}</div>
                         <div className="option" onClick={() => { setFilters(prev => ({ ...prev, price: "< 500" })); }}>{'< 500'}</div>
@@ -168,7 +170,7 @@ const Product = () => {
                 <div className='filter' id="rating" onClick={() => { handleFilterClick("rating") }}>
                     <span>{filters.rating === "" ? "Rating" : filters.rating}</span>
                     <BsArDown size={16} color='black' strokeWidth={1} style={{ display: filters.rating === "" ? "flex" : "none", rotate: isFilterActive.rating === true ? '-90deg' : '0deg' }} />
-                    <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.rating === "" ? "none" : "flex" }} />
+                    <BsClose size={20} color='black' strokeWidth={1} style={{ display: filters.rating === "" ? "none" : "flex" }} onClick={() => setFilters(prev => ({ ...prev, rating: "" }))} />
                     <div className='options'>
                         <div className="option" onClick={() => { setFilters(prev => ({ ...prev, rating: "4" })); }}>{'⭐⭐⭐⭐'}</div>
                         <div className="option" onClick={() => { setFilters(prev => ({ ...prev, rating: "3" })); }}>{'⭐⭐⭐'}</div>
@@ -183,7 +185,7 @@ const Product = () => {
                 <div className='filter' id='sortby' onClick={() => { handleFilterClick("sortby") }}>
                     <span>{filters.sortby === "" ? "Sort by" : filters.sortby}</span>
                     <PiSlider size={16} color='black' strokeWidth={1} style={{ display: filters.sortby === "" ? "flex" : "none" }} />
-                    <BsClose size={18} color='black' strokeWidth={1} style={{ display: filters.sortby === "" ? "none" : "flex" }} />
+                    <BsClose size={20} color='black' strokeWidth={1} style={{ display: filters.sortby === "" ? "none" : "flex" }} onClick={() => setFilters(prev => ({ ...prev, sortby: "" }))} />
                     <div className='options'>
                         <div className="option" onClick={() => { setFilters(prev => ({ ...prev, sortby: "A-Z" })); }}>{'A-Z'}</div>
                         <div className="option" onClick={() => { setFilters(prev => ({ ...prev, sortby: "Title" })); }}>{'Title'}</div>
@@ -195,9 +197,48 @@ const Product = () => {
 
             {/* -------------------------------- PRODUCTS ------------------------------------- */}
             <div id='product'>
-                {hasActiveFilter() && (
-                    <h2>Filter active</h2>
-                )}
+                {hasActiveFilter() ? (
+                    <>
+                        <h3>Filtered Products</h3>
+                        <div id='filtered-product'>
+                        </div>
+                    </>
+                ) :
+                    (
+                        <>
+                            <h3>Newly Added</h3>
+                            <div id='new-product'>
+                                {products.filter(p => p.isNew).map((np, index) => {
+                                    return (
+                                        <div key={index} className='product-card'>
+                                            <div className='pc-top'>
+                                                <img src={""} alt="img" loading='lazy' />
+                                                <div className='pc-add-wishlist'>
+                                                    {/* icon goes here */}
+                                                </div>
+                                            </div>
+                                            <div className='pc-middle'>
+                                                <div className='pc-title'>{np.title}</div>
+                                                <div className='pc-price'>{np.price}</div>
+                                            </div>
+                                            <div className='pc-bottom'>
+                                                <div className='pc-description'>{np.description}</div>
+                                                <div className='pc-rating'>{Array.from({ length: 5 }).map((_, i) => (
+                                                    <span key={i}>{
+                                                        (i < np.rating) ? <BsStarFilled size={24} color='purple' /> : <BsStarEmpty size={24} color='purple' />
+                                                    }</span>
+                                                ))}
+                                                </div>
+                                            </div>
+                                            <button className='add-cart-btn'>Add to cart</button>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </>
+                    )
+                }
+
             </div>
 
         </>
