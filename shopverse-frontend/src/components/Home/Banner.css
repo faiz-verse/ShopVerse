@@ -89,7 +89,7 @@
 /* mobiles */
 @media (max-width: 480px) {
     #banner-wrapper {
-        width: calc(100% - 40px);
+        width: calc(100% - 30px);
         height: 180px;
     }
 
@@ -118,7 +118,7 @@
 /* tablets */
 @media (min-width: 481px) and (max-width: 820px) {
     #banner-wrapper {
-        width: calc(100% - 60px);
+        width: calc(100% - 50px);
         height: 200px;
     }
 

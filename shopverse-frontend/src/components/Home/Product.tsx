@@ -3,7 +3,7 @@ import './Product.css'
 
 // for react icons
 import { type IconBaseProps } from 'react-icons'
-import { BsChevronDown, BsX, BsArrowClockwise, BsStar, BsStarFill } from 'react-icons/bs'
+import { BsChevronDown, BsX, BsArrowClockwise, BsStar, BsStarFill, BsHeart, BsHeartFill } from 'react-icons/bs'
 import { PiSlidersHorizontal } from "react-icons/pi";
 
 // to import json data
@@ -17,6 +17,8 @@ const Product = () => {
     const PiSlider = PiSlidersHorizontal as React.ComponentType<IconBaseProps>
     const BsStarEmpty = BsStar as React.ComponentType<IconBaseProps>
     const BsStarFilled = BsStarFill as React.ComponentType<IconBaseProps>
+    const BsDil = BsHeart as React.ComponentType<IconBaseProps>
+    const BsDilFill = BsHeartFill as React.ComponentType<IconBaseProps>
 
     // ----------------------- FOR PRODUCTS --------------------------
     const products = productData.data
@@ -200,32 +202,91 @@ const Product = () => {
                 {hasActiveFilter() ? (
                     <>
                         <h3>Filtered Products</h3>
-                        <div id='filtered-product'>
+                        <div id='filtered-product' className='product-grid'>
+                            {products
+                                .filter(product => {
+                                    // category filter
+                                    if (filters.category && product.category !== filters.category) return false;
+
+                                    // type filter
+                                    if (filters.type && product.type !== filters.type) return false;
+
+                                    // price filter (your filters.price is a string like "< 500")
+                                    if (filters.price) {
+                                        const maxPrice = parseInt(filters.price.replace("<", "").trim());
+                                        if (product.price * 2 >= maxPrice) return false;
+                                    }
+
+                                    // rating filter
+                                    if (filters.rating && product.rating < Number(filters.rating)) return false;
+
+                                    // sortby will be applied later, not a filter here
+                                    return true;
+                                })
+                                // sorting logic
+                                .sort((a, b) => {
+                                    switch (filters.sortby) {
+                                        case "A-Z":
+                                        case "Title":
+                                            return a.title.localeCompare(b.title);
+                                        case "Price":
+                                            return a.price - b.price;
+                                        case "Rating":
+                                            return b.rating - a.rating;
+                                        default:
+                                            return 0;
+                                    }
+                                })
+                                .map((product, index) => (
+                                    <div key={index} className='product-card'>
+                                        <div className='pc-top'>
+                                            <img src={""} alt="img" loading='lazy' />
+                                            <div className='pc-add-wishlist'>
+                                                <BsDil className='bs-dil' size={20} color='purple'></BsDil>
+                                            </div>
+                                        </div>
+                                        <div className='pc-middle'>
+                                            <div className='pc-title'>{product.title}</div>
+                                            <div className='pc-price'>₹{product.price * 2}</div>
+                                        </div>
+                                        <div className='pc-bottom'>
+                                            <div className='pc-description'>{product.description}</div>
+                                            <div className='pc-rating'>{Array.from({ length: 5 }).map((_, i) => (
+                                                <span key={i}>{
+                                                    (i < product.rating) ? <BsStarFilled size={18} color='purple' /> : <BsStarEmpty size={18} color='purple' />
+                                                }</span>
+                                            ))}
+                                            </div>
+                                        </div>
+                                        <button className='add-cart-btn'>Add to cart</button>
+                                    </div>
+                                ))}
                         </div>
                     </>
                 ) :
                     (
                         <>
+                            {/* New Products */}
                             <h3>Newly Added</h3>
-                            <div id='new-product'>
+                            <div id='new-product' className='product-grid'>
                                 {products.filter(p => p.isNew).map((np, index) => {
                                     return (
                                         <div key={index} className='product-card'>
                                             <div className='pc-top'>
                                                 <img src={""} alt="img" loading='lazy' />
                                                 <div className='pc-add-wishlist'>
-                                                    {/* icon goes here */}
+                                                    <BsDil className='bs-dil' size={20} color='purple'></BsDil>
                                                 </div>
                                             </div>
                                             <div className='pc-middle'>
                                                 <div className='pc-title'>{np.title}</div>
-                                                <div className='pc-price'>{np.price}</div>
+                                                <div className='pc-price'>₹{np.price * 2}</div>
                                             </div>
                                             <div className='pc-bottom'>
                                                 <div className='pc-description'>{np.description}</div>
                                                 <div className='pc-rating'>{Array.from({ length: 5 }).map((_, i) => (
                                                     <span key={i}>{
-                                                        (i < np.rating) ? <BsStarFilled size={24} color='purple' /> : <BsStarEmpty size={24} color='purple' />
+                                                        (i < np.rating) ? <BsStarFilled size={18} color='purple' /> : <BsStarEmpty size={18} color='purple' />
                                                     }</span>
                                                 ))}
                                                 </div>
@@ -235,6 +296,73 @@ const Product = () => {
                                     )
                                 })}
                             </div>
+
+                            {/* Highly Rated */}
+                            <h3>Popular Products</h3>
+                            <div id='new-product' className='product-grid'>
+                                {products.filter(p => p.rating >= 4).sort((a, b) => b.rating - a.rating).map((np, index) => {
+                                    return (
+                                        <div key={index} className='product-card'>
+                                            <div className='pc-top'>
+                                                <img src={""} alt="img" loading='lazy' />
+                                                <div className='pc-add-wishlist'>
+                                                    <BsDil className='bs-dil' size={20} color='purple'></BsDil>
+                                                </div>
+                                            </div>
+                                            <div className='pc-middle'>
+                                                <div className='pc-title'>{np.title}</div>
+                                                <div className='pc-price'>₹{np.price * 2}</div>
+                                            </div>
+                                            <div className='pc-bottom'>
+                                                <div className='pc-description'>{np.description}</div>
+                                                <div className='pc-rating'>{Array.from({ length: 5 }).map((_, i) => (
+                                                    <span key={i}>{
+                                                        (i < np.rating) ? <BsStarFilled size={18} color='purple' /> : <BsStarEmpty size={18} color='purple' />
+                                                    }</span>
+                                                ))}
+                                                </div>
+                                            </div>
+                                            <button className='add-cart-btn'>Add to cart</button>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+
+                            {productCategories.map((c, cin) => {
+                                return (
+                                    <>
+                                        <h3>Products for {c.category}</h3>
+                                        <div className='product-grid'>
+                                            {products.filter(p => p.category === c.category).map((np, index) => {
+                                                return (
+                                                    <div key={index} className='product-card'>
+                                                        <div className='pc-top'>
+                                                            <img src={""} alt="img" loading='lazy' />
+                                                            <div className='pc-add-wishlist'>
+                                                                <BsDil className='bs-dil' size={20} color='purple'></BsDil>
+                                                            </div>
+                                                        </div>
+                                                        <div className='pc-middle'>
+                                                            <div className='pc-title'>{np.title}</div>
+                                                            <div className='pc-price'>₹{np.price * 2}</div>
+                                                        </div>
+                                                        <div className='pc-bottom'>
+                                                            <div className='pc-description'>{np.description}</div>
+                                                            <div className='pc-rating'>{Array.from({ length: 5 }).map((_, i) => (
+                                                                <span key={i}>{
+                                                                    (i < np.rating) ? <BsStarFilled size={18} color='purple' /> : <BsStarEmpty size={18} color='purple' />
+                                                                }</span>
+                                                            ))}
+                                                            </div>
+                                                        </div>
+                                                        <button className='add-cart-btn'>Add to cart</button>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    </>
+                                )
+                            })}
                         </>
                     )
                 }
