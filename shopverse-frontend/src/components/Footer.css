@@ -79,6 +79,14 @@
         box-sizing: content-box;
     }
 
+    .footer-brand h2 {
+        font-size: 16px;
+    }
+
+    .footer-brand p {
+        font-size: 12px;
+    }
+
     .footer-links h4,
     .footer-service h4,
     .footer-social h4 {
@@ -86,6 +94,11 @@
     }
 
     .footer-bottom {
+        font-size: 12px;
+    }
+
+    .footer-links ul li a,
+    .footer-service ul li a {
         font-size: 12px;
     }
 
@@ -99,6 +112,14 @@
         box-sizing: content-box;
     }
 
+    .footer-brand h2 {
+        font-size: 16px;
+    }
+
+    .footer-brand p {
+        font-size: 12px;
+    }
+
     .footer-links h4,
     .footer-service h4,
     .footer-social h4 {
@@ -106,6 +127,11 @@
     }
 
     .footer-bottom {
+        font-size: 12px;
+    }
+
+    .footer-links ul li a,
+    .footer-service ul li a {
         font-size: 12px;
     }
 
