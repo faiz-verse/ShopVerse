@@ -3,7 +3,7 @@ import './Product.css'
 
 // for react icons
 import { type IconBaseProps } from 'react-icons'
-import { BsChevronDown, BsX, BsArrowClockwise, BsStar, BsStarFill, BsHeart, BsHeartFill } from 'react-icons/bs'
+import { BsChevronDown, BsX, BsArrowClockwise, BsStar, BsStarFill, BsHeart } from 'react-icons/bs'
 import { PiSlidersHorizontal } from "react-icons/pi";
 
 // to import json data
@@ -328,7 +328,7 @@ const Product = () => {
                                 })}
                             </div>
 
-                            {productCategories.map((c, cin) => {
+                            {productCategories.map((c) => {
                                 return (
                                     <>
                                         <h3>Products for {c.category}</h3>
