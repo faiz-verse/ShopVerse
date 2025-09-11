@@ -133,7 +133,7 @@
     display: grid;
     grid-auto-flow: column;
     grid-template-rows: auto;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     grid-auto-columns: 250px;
     gap: 30px;
     overflow-x: scroll;
