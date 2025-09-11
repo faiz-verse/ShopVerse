@@ -18,7 +18,7 @@ const Product = () => {
     const BsStarEmpty = BsStar as React.ComponentType<IconBaseProps>
     const BsStarFilled = BsStarFill as React.ComponentType<IconBaseProps>
     const BsDil = BsHeart as React.ComponentType<IconBaseProps>
-    const BsDilFill = BsHeartFill as React.ComponentType<IconBaseProps>
+    // const BsDilFill = BsHeartFill as React.ComponentType<IconBaseProps>
 
     // ----------------------- FOR PRODUCTS --------------------------
     const products = productData.data
