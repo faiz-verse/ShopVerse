@@ -31,7 +31,11 @@
     }
 
     .under-progress h2 {
-        font-size: 24px;
+        font-size: 22px;
+    }
+
+    .under-progress p {
+        font-size: 14px;
     }
 
 }
@@ -46,7 +50,11 @@
     }
 
     .under-progress h2 {
-        font-size: 24px;
+        font-size: 22px;
+    }
+
+    .under-progress p {
+        font-size: 14px;
     }
 
 }
