@@ -3,7 +3,13 @@ import './Cart.css'
 
 const Cart = () => {
     return (
-        <div>Cart</div>
+        <div id='Cart' className='Page'>
+            <div className='under-progress'>
+                <h2>Cart</h2>
+                <h3>Under progress 🏗🚧</h3>
+                <p>Currently haulted and i will be working on this soon!</p>
+            </div>
+        </div>
     )
 }
 

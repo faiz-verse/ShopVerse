@@ -1,4 +1,4 @@
-#Home {
+.Page {
     padding: 100px 80px 0px 80px;
     box-sizing: border-box;
     display: flex;
@@ -7,13 +7,29 @@
     height: 200vh;
 }
 
+.under-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: gray;
+}
+
+.under-progress h2 {
+    font-size: 30px;
+    color: black;
+}
+
 /* -------------------------- RESPONSIVENESS ---------------- */
 /* mobiles */
 @media (max-width: 480px) {
 
     /* --------------------- HOME -------------------------- */
-    #Home {
+    .Page {
         padding: 15px;
+    }
+
+    .under-progress h2 {
+        font-size: 24px;
     }
 
 }
@@ -22,8 +38,12 @@
 @media (min-width: 481px) and (max-width: 820px) {
 
     /* --------------------- HOME -------------------------- */
-    #Home {
+    .Page {
         padding: 20px;
+    }
+
+    .under-progress h2 {
+        font-size: 24px;
     }
 
 }

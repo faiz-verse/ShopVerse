@@ -9,7 +9,7 @@ import Product from '../components/Home/Product';
 const Home = () => {
 
     return (
-        <div id='Home'>
+        <div id='Home' className='Page'>
 
             {/* ------------------------------------ BANNER ------------------------------------ */}
             <Banner />
