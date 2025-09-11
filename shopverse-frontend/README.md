@@ -1,3 +1,3 @@
-# React + TypeScript + Vite
+## React + TypeScript + Vite
 
-## Currently under progress! 🏗🚧
+### Currently under progress! 🏗🚧
