@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 
 // Components
 import Nav from './components/Nav';
+import Footer from './components/Footer';
 
 // Pages
 import Home from './pages/Home'
@@ -34,6 +35,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/profile" element={<Profile />} />
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
         </Routes>
+        <Footer />
     </BrowserRouter>
     //   </StrictMode>,
 )
